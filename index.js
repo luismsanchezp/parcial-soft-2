@@ -2,10 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 require('dotenv').config()
 
+const invoice_routes = require('./src/routes/invoice.routes')
+
 const port = process.env.PORT || 3000
 
 const app = express()
 app.listen(port, () => console.log('server port: ', port))
+
+app.use(express.json());
+app.use('/api', invoice_routes)
+
 app.get('/', (req, res) => res.send('Testing'))
 
 mongoose
@@ -16,4 +22,3 @@ mongoose
     .catch ((err) => {
         console.error(err);
     });
-app.use(express.json());
