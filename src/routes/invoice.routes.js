@@ -67,3 +67,4 @@ function find_product(invoice, reference) {
 function find_by_reference(invoices, reference) {
     return invoices.filter(find_product(reference))
 }
+module.exports = invoice_routes
